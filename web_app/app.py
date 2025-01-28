@@ -3,6 +3,8 @@ import openai
 from threading import Lock
 from bs4 import BeautifulSoup
 
+# Paste API key here
+
 def format_string(input_string):
 
     formatted_string = input_string.replace('\n', '<br>')
