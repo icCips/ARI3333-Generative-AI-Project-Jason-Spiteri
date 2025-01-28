@@ -1,0 +1,327 @@
+main {
+    padding-bottom: 120px; /* Add padding equal to or slightly larger than the dialog box height */
+}
+
+hr {
+    width: 80%;
+    border: 0;
+    height: 2px;
+    background-color: #9a9a9a;
+    margin: 40px auto; /* Center and add vertical spacing */
+}
+
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fffdf5;
+    color: #282827;
+    margin: 0;
+    padding: 0;
+    /* Remove the following lines:
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    */
+    
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+p {
+    text-align: center;
+}
+
+.container {
+    text-align: center;
+    max-width: none; /* Remove the fixed maximum width */
+    width: 75%; /* Allow it to take up more space */
+    padding: 20px;
+    background-color: #fffdf5;
+    border-radius: 10px;
+    margin: 0 auto; /* Ensure the container stays centered */
+}
+
+/* Header Styling */
+header h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0 0 50px 0;
+    color: #282827;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #282827;
+    text-align: center;
+}
+
+/* Circle Button */
+.circle-container {
+    margin-top: 50px;
+}
+
+.circle {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    background-color: #282827;
+    border-radius: 50%;
+    position: relative;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    overflow: hidden;
+    color: #fff; /* Default text color */
+    transition: transform 0.5s, background-color 0.5s, box-shadow 0.5s;
+}
+
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s; /* Smooth fade effect */
+}
+
+.circle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%; /* Set the image to 60% of the circle’s width */
+    height: 90%; /* Set the image to 60% of the circle’s height */
+    background-image: url("../images/full_size_logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+    pointer-events: none; /* Ensure it doesn’t interfere with clicks */
+}
+
+.circle:hover {
+    transform: scale(1.2);
+    background-color: #282827;
+    box-shadow: 0 0 0 8px #282827 inset;
+    color: transparent; /* Hide the text when hovering */
+}
+
+.circle:hover .circle-text {
+    opacity: 0; /* Fade out the text */
+}
+
+.circle:hover::after {
+    opacity: 1; /* Fade in the image */
+}
+
+.knowsdyve-logo {
+    max-width: 10%; /* Ensure it scales responsively */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the logo */
+    padding-bottom: 45px;
+}
+
+/* CYOA Page */
+.cyoa-body {
+    align-items: flex-start;
+}
+
+.cyoa-sections {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: hidden;
+}
+
+.configure-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.6s ease-in-out;
+}
+
+.knowsdyve-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story-box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.story-box {
+    width: 70%;
+}
+
+/* Configure Section - Form */
+.configure-section form {
+    max-height: 0; /* Collapse vertically */
+    opacity: 0; /* Invisible */
+    overflow: hidden; /* Prevent overflow */
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease; /* Add padding animation */
+    padding: 0 20px; /* Initially remove vertical padding for clean collapse */
+}
+
+/* Hover effect to widen the Configure section */
+.configure-section:hover {
+    transform: scale(1.2); /* Slightly enlarge on hover */
+    transition: transform 1s ease-in-out;
+}
+
+/* Disable hover effect when the form is expanded */
+.configure-section.active:hover {
+    transform: none; /* Remove the hover scaling effect */
+}
+
+/* When the form is visible */
+.configure-section.active form {
+    max-height: 800px; /* Expand to fit the content */
+    opacity: 1; /* Fade in */
+    padding: 20px; /* Restore padding */
+    width: 100%; /* Ensure full width */
+}
+
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
+    gap: 20px; /* Space between rows */
+    max-width: 600px; /* Limit form width */
+    margin: 0 auto; /* Center the form */
+}
+
+/* Fix for checkbox alignment */
+.form-row input[type="checkbox"] {
+    margin-left: 10px; /* Add space between label and checkbox */
+}
+
+.form-row {
+    display: flex;
+    justify-content: flex-start; /* Align label and checkbox to the left */
+    align-items: center; /* Vertically align label and checkbox */
+    gap: 10px; /* Space between label and checkbox */
+}
+
+/* Label Styling */
+form label {
+    flex: 0 0 200px; /* Fixed width for labels */
+    text-align: right; /* Align text to the right */
+    font-size: 1.1rem;
+    color: #282827;
+    margin-right: 10px; /* Add space between label and input */
+}
+
+/* Input Field Styling */
+form input[type="text"] {
+    flex: 0 0 300px; /* Fixed width for inputs */
+    font-size: 1rem;
+    padding: 8px;
+    background-color: #fffdf5; /* Light background to match the page's theme */
+    border: 2px solid #282827; /* Dark border to match the page's theme */
+    border-radius: 5px;
+}
+
+
+/* Button Styling */
+form button {
+    align-self: center; /* Center the button */
+    background-color: #282827;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #444444;
+}
+
+/* Style the checkbox */
+.styled-checkbox {
+    width: 24px;  /* Increase size of the checkbox */
+    height: 24px;
+    accent-color: #282827;  /* Dark accent color to match the theme */
+    background-color: #fffdf5; /* Light background to match the page's theme */
+    border: 2px solid #282827; /* Dark border matching the theme */
+    border-radius: 50px; /* Slight rounding for the corners */
+    margin-left: 10px; /* Space between label and checkbox */
+    appearance: none; /* Remove default system checkbox appearance */
+    position: relative;
+}
+
+
+/* Optional: Hover effect for checkbox */
+.styled-checkbox:hover {
+    background-color: #fffdf5;
+}
+
+/* Checkbox when unticked */
+.styled-checkbox:not(:checked) {
+    background-color: #fffdf5; /* Ensure it matches the light background of the page */
+}
+
+/* Checkbox when checked */
+.styled-checkbox:checked {
+    background-color: #282827; /* Dark background when checked */
+    border-color: #282827; /* Border matches the background when checked */
+}
+
+main p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+/* Dialog Box Styling */
+.dialog-box-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fffdf5;
+    padding: 20px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    z-index: 999; /* Keep it on top of other elements */
+    display: flex;
+    justify-content: center;  
+}
+
+.dialog-box {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fffdf5;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.response-form {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invisible-text {
+    visibility: hidden; /* Makes the text invisible but still takes up space */
+    height: 0; /* Optional, if you don't want the line to take any visual height */
+    overflow: hidden; /* Prevents any overflow from becoming visible */
+}
